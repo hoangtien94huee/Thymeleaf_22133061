@@ -26,11 +26,11 @@ public class CategoryServiceImpl implements CategoryService{
 
 	@Override
 	public <S extends Category> S save(S entity) {
-		if(entity.getCategoryid() == null) {
+		if(entity.getCategoryId() == null) {
 			return categoryRepositoty.save(entity);
 		}
 		else {
-			Optional<Category> opt = findById(entity.getCategoryid());
+			Optional<Category> opt = findById(entity.getCategoryId());
 			if (opt.isPresent()) {
 				if(StringUtils.isEmpty(entity.getCategoryName())) {
 					entity.setCategoryName(opt.get().getCategoryName());

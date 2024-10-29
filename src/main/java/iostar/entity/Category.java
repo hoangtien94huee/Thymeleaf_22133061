@@ -27,7 +27,7 @@ public class Category implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CategoryId")
-	private Integer categoryid;
+	private Integer categoryId;
 	@Column(name = "CategoryName",length =200 , columnDefinition = "nvarchar(200) NOT NULL")
 	private String categoryName;
 }

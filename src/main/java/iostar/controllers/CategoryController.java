@@ -37,7 +37,7 @@ public class CategoryController {
         return "admin/categories/addOrEdit";
     }
 
-    @GetMapping("saveOrUpdate")
+    @PostMapping("saveOrUpdate")
     public ModelAndView saveOrUpdate(ModelMap model, @Valid @ModelAttribute("category") CategoryModel categoryModel, BindingResult result) {
         if (result.hasErrors()) {
             return new ModelAndView("admin/categories/addOrEdit");
@@ -63,6 +63,7 @@ public class CategoryController {
         //redirect ve URL controller
         return new ModelAndView("forward:/admin/categories/searchpaginated", model);
     }
+
 
     @RequestMapping("")
     public String list(ModelMap model) {

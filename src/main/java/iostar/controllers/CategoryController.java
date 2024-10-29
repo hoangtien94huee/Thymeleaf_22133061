@@ -37,9 +37,8 @@ public class CategoryController {
         return "admin/categories/addOrEdit";
     }
 
-    @PostMapping("saveOrUpdate")
-    public ModelAndView saveOrUpdate(ModelMap model,
-                                     @Valid @ModelAttribute("category") CategoryModel categoryModel, BindingResult result) {
+    @GetMapping("saveOrUpdate")
+    public ModelAndView saveOrUpdate(ModelMap model, @Valid @ModelAttribute("category") CategoryModel categoryModel, BindingResult result) {
         if (result.hasErrors()) {
             return new ModelAndView("admin/categories/addOrEdit");
         }
@@ -109,7 +108,7 @@ public class CategoryController {
             list = categoryService.findAll();
         }
         model.addAttribute("categories", list);
-        return "admin/categories/search";
+        return "admin/categories/searchpaging";
     }
 
     @RequestMapping("searchpaginated")
@@ -120,7 +119,7 @@ public class CategoryController {
         int count = (int) categoryService.count();
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(3);
-        Pageable pageable = PageRequest.of(currentPage - 1, pageSize, Sort.by("categoryName"));
+        Pageable pageable = PageRequest.of(currentPage - 1, pageSize, Sort.by("categoryid"));
         Page<Category> resultPage = null;
         if (StringUtils.hasText(name)) {
             resultPage = categoryService.findByNameContaining(name, pageable);

@@ -120,7 +120,7 @@ public class CategoryController {
         int count = (int) categoryService.count();
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(3);
-        Pageable pageable = PageRequest.of(currentPage - 1, pageSize, Sort.by("categoryid"));
+        Pageable pageable = PageRequest.of(currentPage - 1, pageSize, Sort.by("categoryId"));
         Page<Category> resultPage = null;
         if (StringUtils.hasText(name)) {
             resultPage = categoryService.findByNameContaining(name, pageable);

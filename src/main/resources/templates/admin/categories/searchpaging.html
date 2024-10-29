@@ -47,13 +47,13 @@
                     </thead>
                     <tbody>
                     <tr th:each="category, iStat : ${categoryPage.content}">
-                        <td th:scope="row">[[${category.categoryid}]]</td>
+                        <td th:scope="row">[[${category.categoryId}]]</td>
                         <td th:text="${category.categoryName}"></td>
                         <td>
-                            <a th:href="@{'/admin/categories/edit/' + ${category.categoryid}}" class="btn btn-outline-warning">
+                            <a th:href="@{'/admin/categories/edit/' + ${category.categoryId}}" class="btn btn-outline-warning">
                                 <i class="fas fa-edit"></i> Edit
                             </a>
-                            <a th:data-id="${category.categoryid}" th:data-name="${category.categoryName}"
+                            <a th:data-id="${category.categoryId}" th:data-name="${category.categoryName}"
                                onclick="showConfirmation(this.getAttribute('data-id'), this.getAttribute('data-name'))"
                                class="btn btn-outline-danger">
                                 <i class="fa fa-trash"></i> Delete
